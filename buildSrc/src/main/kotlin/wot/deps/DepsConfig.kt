@@ -48,6 +48,10 @@ open class DepsConfig {
         private set
     var enableRoom: Boolean = false // Room 依赖及 kapt 插件检查
         private set
+    var enablePaging: Boolean = false // Paging
+        private set
+    var enableOkhttp3: Boolean = false // okhttp3
+        private set
 
     /**
      * 根据 profile 自动设置模块开关
@@ -60,6 +64,8 @@ open class DepsConfig {
                 coroutines(true)
                 navigation(true)
                 room(true)
+                paging(true)
+                okhttp3(true)
             }
 
             Profile.CUSTOM -> { /* 用户自定义，不自动修改 */
@@ -73,6 +79,8 @@ open class DepsConfig {
     fun coroutines(enable: Boolean) = apply { enableCoroutines = enable }
     fun navigation(enable: Boolean) = apply { enableNavigation = enable }
     fun room(enable: Boolean) = apply { enableRoom = enable }
+    fun paging(enable: Boolean) = apply { enablePaging = enable }
+    fun okhttp3(enable: Boolean) = apply { enableOkhttp3 = enable }
 
     override fun toString(): String = buildString {
         appendLine("DepsConfig:")
@@ -81,5 +89,7 @@ open class DepsConfig {
         appendLine("  enableCoroutines = $enableCoroutines")
         appendLine("  enableNavigation = $enableNavigation")
         appendLine("  enableRoom = $enableRoom")
+        appendLine("  enablePaging3 = $enablePaging")
+        appendLine("  enableOkhttp3 = $enableOkhttp3")
     }
 }
